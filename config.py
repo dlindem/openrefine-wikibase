@@ -128,11 +128,21 @@ wdt_prefix = 'ldp:'
 # Sparql query used to fetch all the subclasses of a given item.
 # The '$qid' string will be replaced by the qid whose children should be fetched.
 sparql_query_to_fetch_subclasses = """
+PREFIX lwb: <http://data.lexbib.org/entity/>
+PREFIX ldp: <http://data.lexbib.org/prop/direct/>
+PREFIX lp: <http://data.lexbib.org/prop/>
+PREFIX lps: <http://data.lexbib.org/prop/statement/>
+PREFIX lpq: <http://data.lexbib.org/prop/qualifier/>
 SELECT ?child WHERE { ?child ldp:P89* lwb:$qid }
 """
 
 # Sparql query used to fetch all the properties which store unique identifiers
 sparql_query_to_fetch_unique_id_properties = """
+PREFIX lwb: <http://data.lexbib.org/entity/>
+PREFIX ldp: <http://data.lexbib.org/prop/direct/>
+PREFIX lp: <http://data.lexbib.org/prop/>
+PREFIX lps: <http://data.lexbib.org/prop/statement/>
+PREFIX lpq: <http://data.lexbib.org/prop/qualifier/>
 SELECT ?pid WHERE { ?pid rdf:type <http://wikiba.se/ontology#Property> ;
      <http://wikiba.se/ontology#propertyType> <http://wikiba.se/ontology#ExternalId> . }
 """
